@@ -12,6 +12,14 @@ your computer                              Modal
   output/ ◄──────────── zip ─────────────
 ```
 
+## Example
+
+![The sample clip's first 16 frames: original, SAM 3 mask and Depth Anything 3 depth, side by side](assets/example.gif)
+
+The bundled sample's first 16 frames, shown at 8 fps: the original, the SAM 3 mask for
+`cat`, and the Depth Anything 3 depth, coloured for display with one range across all
+frames (near is bright). Made on 2026-11-11 with the same models and settings this script
+uses. The script itself saves the masks as PNGs and the depth as raw EXRs.
 
 ## What you need
 
