@@ -1,6 +1,6 @@
 # Cat masks and depth on Modal
 
-A small, readable Python script that sends a short video to a GPU on [Modal](https://modal.com).
+A script that sends a short video to a GPU on [Modal](https://modal.com).
 There, [SAM 3](https://huggingface.co/facebook/sam3) follows a text prompt (default: `cat`)
 through the frames and [Depth Anything 3](https://huggingface.co/depth-anything/DA3-BASE)
 estimates depth. You get back a mask and a depth map for every frame.
@@ -12,7 +12,6 @@ your computer                              Modal
   output/ ◄──────────── zip ─────────────
 ```
 
-The whole pipeline is one file, `cat_mask_depth_simple.py`, meant to be read top to bottom.
 
 ## What you need
 
