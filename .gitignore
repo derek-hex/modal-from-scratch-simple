@@ -5,8 +5,7 @@ __pycache__/
 venv/
 
 # secrets and tokens: never in a repo, public or private
-.env
-.env.*
+.env*
 !.env.example
 .modal.toml
 *.pem
@@ -18,11 +17,11 @@ output*/
 *.zip
 *.exr
 *.npz
-*.webm
-*.mp4
-*.mov
-*.mkv
-*.avi
+*.[wW][eE][bB][mM]
+*.[mM][pP]4
+*.[mM][oO][vV]
+*.[mM][kK][vV]
+*.[aA][vV][iI]
 
 # sample: keep only this public-domain clip
 !sample/kitten_jumping_on_bamboo_mat.webm
@@ -34,6 +33,7 @@ output*/
 *.ckpt
 
 # editors, OS, notebooks
+*~
 .vscode/
 .idea/
 .DS_Store

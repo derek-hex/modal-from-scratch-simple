@@ -11,7 +11,7 @@
 # run python cat_mask_depth_simple.py [video] [outFolder]; square brackets mean optional.
 # no arguments uses the bundled sample; the default output folder is output.
 # use a fresh output-something folder for other runs so .gitignore keeps results out of git.
-# launch with python, never modal run: modal run would skip the confirmation screen.
+# modal run and modal deploy are blocked: they skip the confirmation screen and .env check.
 # type yes to launch; the estimate is not a spending cap. Check python -m modal app list after.
 # outputs: masks/mask.0001.png and depth/depth.0001.exr sequences inside your output folder.
 # SAM 3 and Depth Anything 3 install from their upstream repos under their own licenses.
@@ -56,6 +56,10 @@ depthCommit = '3d835ec1a5802d64a8b8b15f817a1ab54809bfe4'  # DA3 code revision
 here = Path(__file__).resolve().parent  # folder beside this script
 sampleVideo = here / 'sample' / 'kitten_jumping_on_bamboo_mat.webm'  # bundled sample
 keysPath = here / '.env'  # credentials beside this script
+
+# only python may launch locally; Modal's function containers import this file too
+if modal.is_local() and __name__ != '__main__':
+    raise SystemExit('Launch with: python cat_mask_depth_simple.py (not modal run or modal deploy)')
 
 # describe the remote computer; these handles do not start anything
 image = (modal.Image.debian_slim(python_version='3.12')
@@ -340,7 +344,9 @@ def main():
     if '\ufeff' in contents:
         raise ValueError(message) from None
     keys = set()
-    for line in contents.splitlines():
+
+    # match dotenv's line endings so unicode separators cannot hide unchecked values
+    for line in re.split('\r\n|\n|\r',contents):
         if not line.strip() or line.lstrip().startswith('#'):
             continue
         key,mark,value = line.partition('=')
