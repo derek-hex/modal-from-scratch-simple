@@ -1,0 +1,41 @@
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# secrets and tokens: never in a repo, public or private
+.env
+.env.*
+!.env.example
+.modal.toml
+*.pem
+*.key
+
+# media: videos and results stay on your machine
+input/
+output*/
+*.zip
+*.exr
+*.npz
+*.webm
+*.mp4
+*.mov
+*.mkv
+*.avi
+
+# sample: keep only this public-domain clip
+!sample/kitten_jumping_on_bamboo_mat.webm
+
+# model weights: they live on a Modal volume, never in git
+*.pt
+*.pth
+*.safetensors
+*.ckpt
+
+# editors, OS, notebooks
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.ipynb_checkpoints/

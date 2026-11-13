@@ -1,0 +1,6 @@
+# what YOUR computer needs to send work to Modal.
+# what the model needs (torch, sam3, depth-anything-3) is NOT here:
+# it is installed on Modal's computer, by the image in the script.
+modal==1.6.3
+# Secret.from_dotenv requires this locally when the secret is loaded.
+python-dotenv==1.2.4
